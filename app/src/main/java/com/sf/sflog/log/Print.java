@@ -6,38 +6,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Print implements LogImpl {
-    abstract void log(int type, String s);
+    abstract void log(int type, String tag, String s);
 
     @Override
     public void v(String str) {
-        print(Log.VERBOSE, str);
+        print(Log.VERBOSE, SFLog.logConfig.defaultTag, str);
     }
 
     @Override
     public void d(String str) {
-        print(Log.DEBUG, str);
+        print(Log.DEBUG, SFLog.logConfig.defaultTag, str);
     }
 
     @Override
     public void i(String str) {
-        print(Log.INFO, str);
+        print(Log.INFO, SFLog.logConfig.defaultTag, str);
     }
 
     @Override
     public void w(String str) {
-        print(Log.WARN, str);
+        print(Log.WARN, SFLog.logConfig.defaultTag, str);
     }
 
     @Override
     public void e(String str) {
-        print(Log.ERROR, str);
+        print(Log.ERROR, SFLog.logConfig.defaultTag, str);
     }
 
-    private void print(int type, String str) {
-        if (!SFLog.logConfig.isOpenLog())
+    @Override
+    public void v(String tag, String str) {
+        print(Log.VERBOSE, tag, str);
+    }
+
+    @Override
+    public void d(String tag, String str) {
+        print(Log.DEBUG, tag, str);
+    }
+
+    @Override
+    public void i(String tag, String str) {
+        print(Log.INFO, tag, str);
+    }
+
+    @Override
+    public void w(String tag, String str) {
+        print(Log.WARN, tag, str);
+    }
+
+    @Override
+    public void e(String tag, String str) {
+        print(Log.ERROR, tag, str);
+    }
+
+    public void print(int type, String tag, String str) {
+        if (!SFLog.logConfig.openLog)
             return;
         handlerStr();
-        log(type, str);
+        log(type, tag, str);
     }
 
     private void handlerStr() {
@@ -94,6 +119,7 @@ public abstract class Print implements LogImpl {
     String getCenterString() {
         return "╟*******************************************************************************************************************";
     }
+
     /**
      * 长字符串转化为List
      *

@@ -1,8 +1,13 @@
 package com.sf.sflog.log;
 
 public class SFLog {
-    private static final Print print = new SourcePrint();
-    public static final LogConfig logConfig = new LogConfig();
+    private static final LogImpl print = new SourcePrint();
+    static final LogConfig logConfig = new LogConfig();
+
+    public LogConfig getLogConfig() {
+        return logConfig;
+    }
+
     public static void v(String str) {
         print.v(str);
     }
