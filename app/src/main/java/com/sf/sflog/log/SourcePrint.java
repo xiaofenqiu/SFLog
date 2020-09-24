@@ -11,6 +11,7 @@ class SourcePrint extends Print {
         print(type, getNormalString() + getTag());
         print(type, getCenterString());
         List<String> strings = stringToList(s);
+
         for (String str : strings) {
             print(type, getNormalString() + str);
         }
