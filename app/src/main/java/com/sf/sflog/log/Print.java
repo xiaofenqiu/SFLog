@@ -17,52 +17,52 @@ public abstract class Print implements LogImpl {
 
     @Override
     public void v(String str) {
-        print(Log.VERBOSE, SFLog.logConfig.defaultTag, str);
+        normalPrint(Log.VERBOSE, SFLog.logConfig.defaultTag, str);
     }
 
     @Override
     public void d(String str) {
-        print(Log.DEBUG, SFLog.logConfig.defaultTag, str);
+        normalPrint(Log.DEBUG, SFLog.logConfig.defaultTag, str);
     }
 
     @Override
     public void i(String str) {
-        print(Log.INFO, SFLog.logConfig.defaultTag, str);
+        normalPrint(Log.INFO, SFLog.logConfig.defaultTag, str);
     }
 
     @Override
     public void w(String str) {
-        print(Log.WARN, SFLog.logConfig.defaultTag, str);
+        normalPrint(Log.WARN, SFLog.logConfig.defaultTag, str);
     }
 
     @Override
     public void e(String str) {
-        print(Log.ERROR, SFLog.logConfig.defaultTag, str);
+        normalPrint(Log.ERROR, SFLog.logConfig.defaultTag, str);
     }
 
     @Override
     public void v(String tag, String str) {
-        print(Log.VERBOSE, tag, str);
+        normalPrint(Log.VERBOSE, tag, str);
     }
 
     @Override
     public void d(String tag, String str) {
-        print(Log.DEBUG, tag, str);
+        normalPrint(Log.DEBUG, tag, str);
     }
 
     @Override
     public void i(String tag, String str) {
-        print(Log.INFO, tag, str);
+        normalPrint(Log.INFO, tag, str);
     }
 
     @Override
     public void w(String tag, String str) {
-        print(Log.WARN, tag, str);
+        normalPrint(Log.WARN, tag, str);
     }
 
     @Override
     public void e(String tag, String str) {
-        print(Log.ERROR, tag, str);
+        normalPrint(Log.ERROR, tag, str);
     }
 
     @Override
@@ -115,7 +115,7 @@ public abstract class Print implements LogImpl {
         json(Log.ERROR, tag, str);
     }
 
-    public void print(int type, String tag, String str) {
+    public void normalPrint(int type, String tag, String str) {
         if (!SFLog.logConfig.openLog)
             return;
         log(type, tag, str);
@@ -174,7 +174,6 @@ public abstract class Print implements LogImpl {
         }
         return -1;
     }
-
 
 
     /**

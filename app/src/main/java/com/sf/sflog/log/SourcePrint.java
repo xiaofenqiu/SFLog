@@ -26,7 +26,6 @@ class SourcePrint extends Print {
 
     }
 
-    @Override
     void logForJson(int type, String tag, String s) {
         if (SFLog.logConfig.isShowLine) {
             print(type, tag, SFLog.logConfig.getUpString());
@@ -46,8 +45,7 @@ class SourcePrint extends Print {
         }
     }
 
-    @Override
-    public void print(int type, String tag, String s) {
+    private void print(int type, String tag, String s) {
         switch (type) {
             case Log.VERBOSE:
                 Log.v(tag, s);
