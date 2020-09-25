@@ -1,12 +1,19 @@
 package com.sf.sflog.log;
 
+import android.text.TextUtils;
 import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Print implements LogImpl {
     abstract void log(int type, String tag, String s);
+
+    abstract void logForJson(int type, String tag, String s);
 
     @Override
     public void v(String str) {
@@ -58,15 +65,58 @@ public abstract class Print implements LogImpl {
         print(Log.ERROR, tag, str);
     }
 
+    @Override
+    public void jsonForV(String tag, String str) {
+        json(Log.VERBOSE, tag, str);
+    }
+
+    @Override
+    public void jsonForD(String tag, String str) {
+        json(Log.DEBUG, tag, str);
+    }
+
+    @Override
+    public void jsonForI(String tag, String str) {
+        json(Log.INFO, tag, str);
+    }
+
+    @Override
+    public void jsonForW(String tag, String str) {
+        json(Log.VERBOSE, tag, str);
+    }
+
+    @Override
+    public void jsonForE(String tag, String str) {
+        json(Log.ERROR, tag, str);
+    }
+
     public void print(int type, String tag, String str) {
         if (!SFLog.logConfig.openLog)
             return;
-        handlerStr();
         log(type, tag, str);
     }
 
-    private void handlerStr() {
-
+    private void json(int type, String tag, String json) {
+        if (!SFLog.logConfig.openLog)
+            return;
+        int indent = 4;
+        if (TextUtils.isEmpty(json)) {
+            logForJson(type, tag, "JSON{json is empty}");
+            return;
+        }
+        try {
+            if (json.startsWith("{")) {
+                JSONObject jsonObject = new JSONObject(json);
+                String msg = jsonObject.toString(indent);
+                logForJson(type, tag, msg);
+            } else if (json.startsWith("[")) {
+                JSONArray jsonArray = new JSONArray(json);
+                String msg = jsonArray.toString(indent);
+                logForJson(type, tag, msg);
+            }
+        } catch (JSONException e) {
+            logForJson(type, tag, e.toString() + "\n\njson = " + json);
+        }
     }
 
     String getTag() {
@@ -126,7 +176,7 @@ public abstract class Print implements LogImpl {
      * @param msg
      * @return
      */
-    public static List<String> stringToList(String msg) {
+    static List<String> stringToList(String msg) {
         List<String> stringList = new ArrayList<>();
         int index = 0;
         int maxLength = LogConfig.LINE_MAX;

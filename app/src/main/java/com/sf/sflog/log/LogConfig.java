@@ -5,7 +5,7 @@ public class LogConfig {
     static final int LINE_MAX = 1024 * 3;
     static final int MIN_STACK_OFFSET = 5;
     // 换行符
-    public static final String BR = System.getProperty("line.separator");
+    static final String BR = System.getProperty("line.separator");
     String defaultTag = "tag";
     boolean openLog = true;
 
