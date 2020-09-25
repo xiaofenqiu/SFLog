@@ -66,6 +66,31 @@ public abstract class Print implements LogImpl {
     }
 
     @Override
+    public void jsonForV(String str) {
+        json(Log.VERBOSE, SFLog.logConfig.defaultTag, str);
+    }
+
+    @Override
+    public void jsonForD(String str) {
+        json(Log.DEBUG, SFLog.logConfig.defaultTag, str);
+    }
+
+    @Override
+    public void jsonForI(String str) {
+        json(Log.INFO, SFLog.logConfig.defaultTag, str);
+    }
+
+    @Override
+    public void jsonForW(String str) {
+        json(Log.VERBOSE, SFLog.logConfig.defaultTag, str);
+    }
+
+    @Override
+    public void jsonForE(String str) {
+        json(Log.ERROR, SFLog.logConfig.defaultTag, str);
+    }
+
+    @Override
     public void jsonForV(String tag, String str) {
         json(Log.VERBOSE, tag, str);
     }
@@ -119,22 +144,18 @@ public abstract class Print implements LogImpl {
         }
     }
 
-    String getTag() {
-        try {
-            StackTraceElement[] trace = Thread.currentThread().getStackTrace();
-            int i = getStackOffset(trace);
-            if (i >= 0 && i < trace.length) {
-                String tag = "%s.%s%s";
-                StackTraceElement element = trace[i];
-                String clazzName = element.getClassName();
-                String stackTrace = element.toString();
-                stackTrace = stackTrace.substring(stackTrace.lastIndexOf('('));
-                clazzName = clazzName.substring(clazzName.lastIndexOf(".") + 1);
-                tag = String.format(tag, clazzName, element.getMethodName(), stackTrace);
-                return tag;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    String getClassTag() {
+        StackTraceElement[] trace = Thread.currentThread().getStackTrace();
+        int i = getStackOffset(trace);
+        if (i >= 0 && i < trace.length) {
+            String tag = "%s.%s%s";
+            StackTraceElement element = trace[i];
+            String clazzName = element.getClassName();
+            String stackTrace = element.toString();
+            stackTrace = stackTrace.substring(stackTrace.lastIndexOf('('));
+            clazzName = clazzName.substring(clazzName.lastIndexOf(".") + 1);
+            tag = String.format(tag, clazzName, element.getMethodName(), stackTrace);
+            return tag;
         }
         return "TAG";
     }
@@ -154,21 +175,7 @@ public abstract class Print implements LogImpl {
         return -1;
     }
 
-    String getUpString() {
-        return "╔*******************************************************************************************************************";
-    }
 
-    String getDownString() {
-        return "╚*******************************************************************************************************************";
-    }
-
-    String getNormalString() {
-        return "║ ";
-    }
-
-    String getCenterString() {
-        return "╟*******************************************************************************************************************";
-    }
 
     /**
      * 长字符串转化为List

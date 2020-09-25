@@ -7,26 +7,43 @@ import java.util.List;
 class SourcePrint extends Print {
     @Override
     void log(int type, String tag, String s) {
-        print(type, tag, getUpString());
-        print(type, tag, getNormalString() + getTag());
-        print(type, tag, getCenterString());
-        List<String> strings = stringToList(s);
-        for (String str : strings) {
-            print(type, tag, getNormalString() + str);
+        if (SFLog.logConfig.isShowLine) {
+            print(type, tag, SFLog.logConfig.getUpString());
+            print(type, tag, SFLog.logConfig.getNormalString() + getClassTag());
+            print(type, tag, SFLog.logConfig.getCenterString());
+            List<String> strings = stringToList(s);
+            for (String str : strings) {
+                print(type, tag, SFLog.logConfig.getNormalString() + str);
+            }
+            print(type, tag, SFLog.logConfig.getDownString());
+        } else {
+            print(type, tag, getClassTag());
+            List<String> strings = stringToList(s);
+            for (String str : strings) {
+                print(type, tag, str);
+            }
         }
-        print(type, tag, getDownString());
+
     }
 
     @Override
     void logForJson(int type, String tag, String s) {
-        print(type, tag, getUpString());
-        print(type, tag, getNormalString() + getTag());
-        print(type, tag, getCenterString());
-        String[] strings = s.split(LogConfig.BR == null ? "" : LogConfig.BR);
-        for (String str : strings) {
-            print(type, tag, getNormalString() + str);
+        if (SFLog.logConfig.isShowLine) {
+            print(type, tag, SFLog.logConfig.getUpString());
+            print(type, tag, SFLog.logConfig.getNormalString() + getClassTag());
+            print(type, tag, SFLog.logConfig.getCenterString());
+            String[] strings = s.split(LogConfig.BR == null ? "" : LogConfig.BR);
+            for (String str : strings) {
+                print(type, tag, SFLog.logConfig.getNormalString() + str);
+            }
+            print(type, tag, SFLog.logConfig.getDownString());
+        } else {
+            print(type, tag, getClassTag());
+            String[] strings = s.split(LogConfig.BR == null ? "" : LogConfig.BR);
+            for (String str : strings) {
+                print(type, tag, str);
+            }
         }
-        print(type, tag, getDownString());
     }
 
     @Override
@@ -49,4 +66,5 @@ class SourcePrint extends Print {
                 break;
         }
     }
+
 }

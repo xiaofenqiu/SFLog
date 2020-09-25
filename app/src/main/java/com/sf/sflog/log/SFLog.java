@@ -1,12 +1,11 @@
 package com.sf.sflog.log;
 
-import android.util.Log;
 
 public class SFLog {
     private static final LogImpl print = new SourcePrint();
-    static final LogConfig logConfig = new LogConfig();
+    static final ConfigImpl logConfig = new LogConfig();
 
-    public LogConfig getLogConfig() {
+    public static ConfigImpl getLogConfig() {
         return logConfig;
     }
 
