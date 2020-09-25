@@ -1,5 +1,7 @@
 package com.sf.sflog.log;
 
+import android.util.Log;
+
 public class SFLog {
     private static final LogImpl print = new SourcePrint();
     static final LogConfig logConfig = new LogConfig();
@@ -48,5 +50,23 @@ public class SFLog {
         print.e(tag, str);
     }
 
+    public void jsonForV(String tag, String str) {
+        print.jsonForV(tag, str);
+    }
 
+    public void jsonForD(String tag, String str) {
+        print.jsonForD(tag, str);
+    }
+
+    public void jsonForI(String tag, String str) {
+        print.jsonForI(tag, str);
+    }
+
+    public void jsonForW(String tag, String str) {
+        print.jsonForW(tag, str);
+    }
+
+    public void jsonForE(String tag, String str) {
+        print.jsonForE(tag, str);
+    }
 }
