@@ -28,5 +28,25 @@ public class SFLog {
         print.e(str);
     }
 
+    public static void v(String tag, String str) {
+        print.v(tag, str);
+    }
+
+    public static void d(String tag, String str) {
+        print.d(tag, str);
+    }
+
+    public static void i(String tag, String str) {
+        print.i(tag, str);
+    }
+
+    public static void w(String tag, String str) {
+        print.w(tag, str);
+    }
+
+    public static void e(String tag, String str) {
+        print.e(tag, str);
+    }
+
 
 }
