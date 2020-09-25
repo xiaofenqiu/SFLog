@@ -10,6 +10,7 @@ public class LogConfig implements ConfigImpl {
     private String centerString = "╟*******************************************************************************************************************";
     // 换行符
     static final String BR = System.getProperty("line.separator");
+
     String defaultTag = "tag";
     boolean openLog = true;
     boolean isShowLine = true;

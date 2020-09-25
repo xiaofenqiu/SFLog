@@ -3,9 +3,9 @@ package com.sf.sflog.log;
 
 public class SFLog {
     private static final LogImpl print = new SourcePrint();
-    static final ConfigImpl logConfig = new LogConfig();
+    static final LogConfig logConfig = new LogConfig();
 
-    public static ConfigImpl getLogConfig() {
+    public static LogConfig getLogConfig() {
         return logConfig;
     }
 
