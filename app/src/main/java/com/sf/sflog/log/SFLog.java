@@ -49,6 +49,26 @@ public class SFLog {
         print.e(tag, str);
     }
 
+    public static void jsonForV(String str) {
+        print.jsonForV(str);
+    }
+
+    public static void jsonForD(String str) {
+        print.jsonForD(str);
+    }
+
+    public static void jsonForI(String str) {
+        print.jsonForI(str);
+    }
+
+    public static void jsonForW(String str) {
+        print.jsonForW(str);
+    }
+
+    public static void jsonForE(String str) {
+        print.jsonForE(str);
+    }
+
     public static void jsonForV(String tag, String str) {
         print.jsonForV(tag, str);
     }
