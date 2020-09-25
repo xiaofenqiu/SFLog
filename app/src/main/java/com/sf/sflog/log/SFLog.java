@@ -50,23 +50,23 @@ public class SFLog {
         print.e(tag, str);
     }
 
-    public void jsonForV(String tag, String str) {
+    public static void jsonForV(String tag, String str) {
         print.jsonForV(tag, str);
     }
 
-    public void jsonForD(String tag, String str) {
+    public static void jsonForD(String tag, String str) {
         print.jsonForD(tag, str);
     }
 
-    public void jsonForI(String tag, String str) {
+    public static void jsonForI(String tag, String str) {
         print.jsonForI(tag, str);
     }
 
-    public void jsonForW(String tag, String str) {
+    public static void jsonForW(String tag, String str) {
         print.jsonForW(tag, str);
     }
 
-    public void jsonForE(String tag, String str) {
+    public static void jsonForE(String tag, String str) {
         print.jsonForE(tag, str);
     }
 }
