@@ -1,3 +1,4 @@
+<pre>
 android日志工具
 allprojects {
     repositories {
@@ -64,5 +65,5 @@ config接口:
     //风格线长度
     ConfigImpl dividingLineLength(int length);
 
-
+</pre>
 
