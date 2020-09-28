@@ -25,6 +25,8 @@ LogConfig.LINE_FORMAT_LINE_FORMAT_LINE样式：SFLog.getLogConfig().dividingLine
 ║ 测试
 ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
+JSON格式输出jsonForE，V，D，I，W
+
 config接口:
     //默认tag
     ConfigImpl defaultTag(String str);
