@@ -24,19 +24,19 @@ public class LogConfig implements ConfigImpl {
     }
 
     @Override
-    public LogConfig defaultTag(String tag) {
+    public ConfigImpl defaultTag(String tag) {
         this.defaultTag = tag;
         return this;
     }
 
     @Override
-    public LogConfig openLog(boolean openLog) {
+    public ConfigImpl openLog(boolean openLog) {
         this.openLog = openLog;
         return this;
     }
 
     @Override
-    public LogConfig openLine(boolean isShowLine) {
+    public ConfigImpl openLine(boolean isShowLine) {
         this.isShowLine = isShowLine;
         return this;
     }
@@ -66,25 +66,25 @@ public class LogConfig implements ConfigImpl {
     }
 
     @Override
-    public LogConfig upChar(char upChar) {
+    public ConfigImpl upChar(char upChar) {
         upString = format(upChar, lineLength);
         return this;
     }
 
     @Override
-    public LogConfig downChar(char downChar) {
+    public ConfigImpl downChar(char downChar) {
         downString = format(downChar, lineLength);
         return this;
     }
 
     @Override
-    public LogConfig normalChar(char normalChar) {
+    public ConfigImpl normalChar(char normalChar) {
         normalString = normalChar + " ";
         return this;
     }
 
     @Override
-    public LogConfig centerChar(char centerChar) {
+    public ConfigImpl centerChar(char centerChar) {
         this.centerString = format(centerChar, lineLength);
         return this;
     }
