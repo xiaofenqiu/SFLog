@@ -130,9 +130,9 @@ public class LogConfig implements ConfigImpl {
         return centerString;
     }
 
-    private String format(char c, int lenth) {
+    public String format(char c, int length) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < lenth; i++) {
+        for (int i = 0; i < length; i++) {
             stringBuilder.append(c);
         }
         return stringBuilder.toString();
