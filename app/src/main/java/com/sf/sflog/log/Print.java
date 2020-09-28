@@ -13,8 +13,6 @@ import java.util.List;
 public abstract class Print implements LogImpl {
     abstract void log(int type, String tag, String s);
 
-    abstract void logForJson(int type, String tag, String s);
-
     @Override
     public void v(String str) {
         normalPrint(Log.VERBOSE, SFLog.logConfig.defaultTag, str);
@@ -126,21 +124,21 @@ public abstract class Print implements LogImpl {
             return;
         int indent = 4;
         if (TextUtils.isEmpty(json)) {
-            logForJson(type, tag, "JSON{json is empty}");
+            log(type, tag, "JSON{json is empty}");
             return;
         }
         try {
             if (json.startsWith("{")) {
                 JSONObject jsonObject = new JSONObject(json);
                 String msg = jsonObject.toString(indent);
-                logForJson(type, tag, msg);
+                log(type, tag, msg);
             } else if (json.startsWith("[")) {
                 JSONArray jsonArray = new JSONArray(json);
                 String msg = jsonArray.toString(indent);
-                logForJson(type, tag, msg);
+                log(type, tag, msg);
             }
         } catch (JSONException e) {
-            logForJson(type, tag, e.toString() + "\n\njson = " + json);
+            log(type, tag, e.toString() + "\n\njson = " + json);
         }
     }
 
