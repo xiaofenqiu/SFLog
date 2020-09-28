@@ -1,5 +1,5 @@
 <pre>
-android日志工具
+android日志工具 可格式化输出json
 allprojects {
     repositories {
 	    ...
