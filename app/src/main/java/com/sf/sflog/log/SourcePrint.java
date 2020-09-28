@@ -11,16 +11,23 @@ class SourcePrint extends Print {
             print(type, tag, SFLog.logConfig.getUpString());
             print(type, tag, SFLog.logConfig.getNormalString() + getClassTag());
             print(type, tag, SFLog.logConfig.getCenterString());
-            List<String> strings = stringToList(s);
-            for (String str : strings) {
-                print(type, tag, SFLog.logConfig.getNormalString() + str);
+
+            String[] stringsBR = s.split(LogConfig.BR == null ? "" : LogConfig.BR);
+            for (String sBR : stringsBR) {
+                List<String> strings = stringToList(sBR);
+                for (String str : strings) {
+                    print(type, tag, SFLog.logConfig.getNormalString() + str);
+                }
             }
             print(type, tag, SFLog.logConfig.getDownString());
         } else {
             print(type, tag, getClassTag());
-            List<String> strings = stringToList(s);
-            for (String str : strings) {
-                print(type, tag, str);
+            String[] stringsBR = s.split(LogConfig.BR == null ? "" : LogConfig.BR);
+            for (String sBR : stringsBR) {
+                List<String> strings = stringToList(sBR);
+                for (String str : strings) {
+                    print(type, tag, str);
+                }
             }
         }
 

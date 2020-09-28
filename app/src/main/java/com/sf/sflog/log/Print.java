@@ -115,7 +115,7 @@ public abstract class Print implements LogImpl {
         json(Log.ERROR, tag, str);
     }
 
-    public void normalPrint(int type, String tag, String str) {
+    private void normalPrint(int type, String tag, String str) {
         if (!SFLog.logConfig.openLog)
             return;
         log(type, tag, str);
